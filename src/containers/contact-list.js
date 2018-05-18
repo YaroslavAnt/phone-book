@@ -1,6 +1,7 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import {List, Image, Input, Search} from 'semantic-ui-react'
 
 
 class ContactList extends React.Component {
@@ -15,11 +16,13 @@ class ContactList extends React.Component {
   showList(){
     return this.state.displayed.map((contact, index)=>{
       return(
-        <li key={index}>        
-          <img src={contact.general.avatar} alt={contact.general.avatar} />
-          <h3>{contact.general.firstName} {contact.general.lastName}</h3>
-          <p>{contact.job.company},<br /> {contact.job.title}</p>
-        </li>
+        <List.Item key={index}>        
+          <Image avatar floated="left" src={contact.general.avatar} alt={contact.general.avatar} />
+          <List.Content floated="left">
+            <List.Header as="h3">{contact.general.firstName} {contact.general.lastName}</List.Header>
+            {/* <p>{contact.job.company},<br /> {contact.job.title}</p> */}
+          </List.Content>
+        </List.Item>
        );
     });
 	}
@@ -38,11 +41,11 @@ class ContactList extends React.Component {
 	render(){
     console.log( this);
 		return(      
-      <div className="sidebar" >        
-        <input id="search" type="search" placeholder="search" onKeyUp={this.searchClient.bind(this)}/>
-        <ul className="list">
+      <div >        
+        <Input icon="search" id="search" placeholder="search" onKeyUp={this.searchClient.bind(this)}/>
+        <List selection verticalAlign="middle">
           {this.showList()}
-        </ul>
+        </List>
       </div>
     );
 	}

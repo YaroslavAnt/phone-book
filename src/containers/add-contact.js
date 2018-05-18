@@ -1,4 +1,5 @@
 import React from 'react';
+import {Form, Button} from 'semantic-ui-react';
 
 
 export class AddContact extends React.Component{
@@ -9,19 +10,26 @@ export class AddContact extends React.Component{
   handleChange(e){
     e.preventDefault();
     const form=document.getElementById('form'),
-          name=form.firstName.value;
-    if(!name.match(/[a-z]/gi)) alert('First name should contain only letters')
+          firstName=form.firstName,
+          secondName=form.secondName.value,
+          email=form.email.value,
+          phone=form.phone.value;
+
+    if(/[^a-z]/.test(firstName.value)) alert('First name should contain only letters')
+    else if(!secondName.match(/[a-z]/gi)) alert('Second name should contain only letters')
+    else if(!email.match(/[a-z]/gi)) alert('Email should contain only letters')
+    else if(!phone.match(/[0-9]/gi)) alert('Phone should contain only letters')
   }
   render(){
     return(
-      <form id="form">
+      <Form id="form">
         <img alt="img"/>
-        <input type="text" name="firstName" placeholder="firstName" />
-        <input type="text" name="secondName" placeholder="secondName" />
-        <input type="email" name="email" placeholder="email" />
-        <input type="text" name="phone" placeholder="phone" />
-        <button type="submit" name="btn"  onClick={this.handleChange} >Add Contact</button>
-      </form>
+        <Form.Input name="firstName" placeholder="firstName" />
+        <Form.Input name="secondName" placeholder="secondName" />
+        <Form.Input name="email" placeholder="email" />
+        <Form.Input name="phone" placeholder="phone" />
+        <Button type="submit" name="btn"  onClick={this.handleChange} >Add Contact</Button>
+      </Form>
     )
   }
 }
