@@ -27,7 +27,7 @@ class ContactList extends React.Component {
     });
 	}
 	
-	searchClient(event){
+	searchContact(event){
     const value = event.target.value.toLowerCase();
     const display = this.props.contacts.filter(function(el){
       const searchValue = JSON.stringify(el).toLocaleLowerCase();
@@ -42,7 +42,7 @@ class ContactList extends React.Component {
     console.log( this);
 		return(      
       <div >        
-        <Input icon="search" id="search" placeholder="search" onKeyUp={this.searchClient.bind(this)}/>
+        <Input icon="search" id="search" placeholder="search" onKeyUp={this.searchContact.bind(this)}/>
         <List selection verticalAlign="middle">
           {this.showList()}
         </List>

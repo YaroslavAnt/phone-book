@@ -1,6 +1,6 @@
 import React from 'react';
 import ContactList from '../containers/contact-list';
-import { AddContact } from '../containers/add-contact';
+import  AddContact  from '../containers/add-contact';
 import { Grid } from 'semantic-ui-react'
 
 const Page = () =>(
