@@ -1,7 +1,6 @@
 import React from 'react';
-import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {List, Image, Input, Search} from 'semantic-ui-react'
+import {List, Image, Input } from 'semantic-ui-react'
 
 
 class ContactList extends React.Component {
@@ -33,6 +32,7 @@ class ContactList extends React.Component {
       const searchValue = JSON.stringify(el).toLocaleLowerCase();
       return searchValue.indexOf(value.toLowerCase()) !==-1;
     });    
+    console.log(display)
     this.setState({
       displayed: display
     })

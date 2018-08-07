@@ -1,12 +1,13 @@
 import React from 'react';
-import {Form, Button} from 'semantic-ui-react';
+import {Form, Button, Image} from 'semantic-ui-react';
 import {connect} from 'react-redux'
-
+import {select} from '../actions/index'
 
 class AddContact extends React.Component{
   constructor(props){
     super(props);
         
+      console.log(this)
 
     this.handleChange=this.handleChange.bind(this);
     this.handleSubmit=this.handleSubmit.bind(this);
@@ -33,8 +34,10 @@ class AddContact extends React.Component{
         phone: form.phone.value
       }
     }
+    console.log(this.props.contacts.concat(newItem))
+    console.log(this.props)
     const display=this.props.contacts.concat(newItem)
-    console.log(newItem)
+    console.log(display)
     this.setState({
       displayed: display
     })
@@ -71,23 +74,25 @@ class AddContact extends React.Component{
   render(){
     return(
       <Form id="form" onSubmit={this.handleSubmit}>
-        <img alt="img" name="img" src="https://api.adorable.io/avatars/285/abott@adorable.png"/>
-        <Form.Input onChange={this.handleChange} label="First Name" name="firstName" placeholder="First Name" />
-        <Form.Input onChange={this.handleChange} label="Second Name" name="secondName" placeholder="Second Name" />
-        <Form.Input onChange={this.handleChange} label="Company" name="company" placeholder="Company" />
-        <Form.Input onChange={this.handleChange} label="Email" name="email" placeholder="email@mail.com" />
-        <Form.Input onChange={this.handleChange} label="Phone" name="phone" placeholder="+000(00)000-00-00" />
+        <Image size="small" alt="img" name="img" src="https://randomuser.me/api/portraits/men/50.jpg"/>
+        {/* <input type="file" name="file" accept=".jpg, .jpeg, .png" ></input> */}
+        <Form.Input value="jhg" onChange={this.handleChange} label="First Name" name="firstName" placeholder="First Name" />
+        <Form.Input value="jhg" onChange={this.handleChange} label="Second Name" name="secondName" placeholder="Second Name" />
+        <Form.Input value="jhg" onChange={this.handleChange} label="Company" name="company" placeholder="Company" />
+        <Form.Input value="email@ukr.net" onChange={this.handleChange} label="Email" name="email" placeholder="email@mail.com" />
+        <Form.Input value="0000000000" onChange={this.handleChange} label="Phone" name="phone" placeholder="+000(00)000-00-00" />
         <Button type="submit" name="btn" disabled onClick={this.handleSubmit} >Add Contact</Button>
       </Form>
     )
   }
 };
 
-
 function mapStateToProps(state){
-  return {
+  console.log(state)
+  return{
     contacts: state.contacts
   }
 }
 
-export default connect(mapStateToProps)(AddContact)
+
+export default connect(mapStateToProps) (AddContact)

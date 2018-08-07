@@ -10,11 +10,12 @@ const Page = () =>(
         <ContactList />
       </Grid.Column>
 
-      <Grid.Column width={7}>
-      </Grid.Column>
-      
       <Grid.Column width={5}>
         <AddContact />
+      </Grid.Column>
+      
+      <Grid.Column width={7}>
+      
       </Grid.Column>
     </Grid.Row>
   </Grid>
